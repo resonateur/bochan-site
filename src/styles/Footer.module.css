@@ -1,0 +1,43 @@
+/* src/styles/Footer.module.css */
+.footer {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 5;
+  pointer-events: none; /* This allows clicks to pass through to elements behind */
+}
+
+.year,
+.rightContent,
+.infoLink,
+.designCredit {
+  font-size: 12px;
+  text-transform: uppercase;
+  pointer-events: auto; /* This ensures the text is still clickable */
+}
+
+.rightContent {
+  display: flex;
+  gap: 20px;
+}
+
+.infoLink {
+  color: white;
+  text-decoration: none;
+  cursor: none !important;
+}
+
+.designCredit {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 10px;
+    bottom: 10px;
+  }
+}

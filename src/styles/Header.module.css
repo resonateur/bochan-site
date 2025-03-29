@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.leftNav,
+.rightNav {
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity var(--transition-speed);
+}
+
+.leftNav:hover,
+.rightNav:hover {
+  opacity: 0.7;
+}
+
+.photographerName {
+  font-size: 3vw;
+  font-weight: normal;
+  letter-spacing: var(--letter-spacing);
+  text-transform: uppercase;
+}
+
+.squareIcon {
+  margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .photographerName {
+    font-size: 5vw;
+  }
+
+  .leftNav,
+  .rightNav {
+    font-size: 10px;
+  }
+}
+
+.nameLink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.nameLink:hover {
+  opacity: 0.9;
+}

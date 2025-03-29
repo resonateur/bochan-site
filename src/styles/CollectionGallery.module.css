@@ -1,0 +1,65 @@
+.galleryOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.galleryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.galleryTitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.galleryContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.galleryImage {
+  object-fit: contain;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.counter {
+  font-size: 12px;
+  opacity: 0.8;
+}

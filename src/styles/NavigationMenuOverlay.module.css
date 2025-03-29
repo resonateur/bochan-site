@@ -1,0 +1,92 @@
+/* src/styles/NavigationMenuOverlay.module.css (full file) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  z-index: 10;
+  position: relative;
+}
+
+.leftNav {
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: none !important;
+}
+
+.photographerName {
+  font-size: 3vw;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: none !important;
+}
+
+.closeButton {
+  font-size: 24px;
+  cursor: none !important;
+}
+
+/* Center menu content vertically */
+.menuContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This centers the content vertically */
+  z-index: 10;
+  position: relative;
+}
+
+.menuItems {
+  padding: 0 20px;
+  margin-top: -80px; /* Adjust this value to fine-tune vertical position */
+}
+
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: none !important;
+}
+
+.menuItem:hover .itemName {
+  opacity: 0.7;
+}
+
+.itemNumber {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .photographerName {
+    font-size: 5vw;
+  }
+}

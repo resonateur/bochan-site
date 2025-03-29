@@ -1,0 +1,119 @@
+/* globals.css */
+:root {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  --transition-speed: 0.3s;
+  --letter-spacing: 0.1em;
+}
+
+[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family:
+    Helvetica Neue,
+    Arial,
+    sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition:
+    background-color var(--transition-speed),
+    color var(--transition-speed);
+  cursor: none !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Custom Cursor Styles */
+.custom-cursor {
+  cursor: none !important;
+}
+
+.custom-cursor * {
+  cursor: none !important;
+}
+
+.interactive {
+  position: relative;
+  display: inline-block;
+  cursor: none !important;
+  z-index: 2;
+}
+
+.interactive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.interactive:hover {
+  color: black;
+}
+
+.interactive:hover::before {
+  transform: scaleX(1);
+}
+
+/* For elements that need the hide-cursor class */
+.hide-cursor {
+  cursor: none !important;
+}
+
+.hide-cursor * {
+  cursor: none !important;
+}
+
+a[href],
+a[href] *,
+[role="link"],
+[role="link"] * {
+  cursor: none !important;
+}
+
+/* Target header links specifically */
+header a,
+header a *,
+.leftNav,
+.leftNav * {
+  cursor: none !important;
+}

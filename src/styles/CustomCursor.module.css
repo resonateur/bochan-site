@@ -1,0 +1,20 @@
+/* src/styles/CustomCursor.module.css */
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    opacity 0.3s ease;
+  z-index: 10000;
+}
+
+.cursor.hover {
+  width: 40px;
+  height: 40px;
+}
