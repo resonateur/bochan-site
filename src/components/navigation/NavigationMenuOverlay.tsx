@@ -18,6 +18,52 @@ const NavigationMenuOverlay: React.FC<NavigationMenuOverlayProps> = ({
   const router = useRouter();
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
+  // Function to render the name with alternating styles and custom kerning
+  const renderStyledName = (name: string) => {
+    // First, split the name into characters with their styles
+    const styledChars = name.split("").map((char, index) => {
+      const lowerChar = char.toLowerCase();
+      const className = index % 2 === 0 ? styles.normalChar : styles.italicChar;
+
+      // Add class names for kerning specific pairs
+      let kernClass = "";
+      if (
+        lowerChar === "u" &&
+        index > 0 &&
+        name[index - 1].toLowerCase() === "y"
+      ) {
+        kernClass = "u";
+      } else if (
+        lowerChar === "c" &&
+        index > 0 &&
+        name[index - 1].toLowerCase() === "o"
+      ) {
+        kernClass = "c";
+      } else if (
+        lowerChar === "y" &&
+        index < name.length - 1 &&
+        name[index + 1].toLowerCase() === "u"
+      ) {
+        kernClass = "y";
+      } else if (
+        lowerChar === "o" &&
+        index < name.length - 1 &&
+        name[index + 1].toLowerCase() === "c"
+      ) {
+        kernClass = "o";
+      }
+
+      return (
+        <span key={index} className={`${className} ${kernClass}`}>
+          {char}
+        </span>
+      );
+    });
+
+    // Wrap the entire name with the kern classes
+    return <span className="kern-yu kern-oc">{styledChars}</span>;
+  };
+
   // Background images for each section
   const backgroundImages = {
     projects: "/images/menu/projects-bg.jpg",
@@ -78,12 +124,15 @@ const NavigationMenuOverlay: React.FC<NavigationMenuOverlayProps> = ({
       <div className={styles.menuHeader}>
         <div
           className={`${styles.leftNav} interactive`}
-          onClick={() => navigateTo("/feed")}
+          onClick={() => {
+            window.location.href = "/feed";
+            onClose();
+          }}
         >
           COLLECTIONS
         </div>
         <h1 className={styles.photographerName} onClick={() => navigateTo("/")}>
-          {photographerName}
+          {renderStyledName(photographerName)}
         </h1>
         <div className={`${styles.closeButton} interactive`} onClick={onClose}>
           ✕

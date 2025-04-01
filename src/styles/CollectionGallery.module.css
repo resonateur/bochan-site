@@ -15,6 +15,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  height: 60px;
 }
 
 .galleryTitle {
@@ -37,17 +38,35 @@
   flex-direction: column;
   position: relative;
   cursor: pointer;
+  height: calc(100vh - 100px);
 }
 
 .imageContainer {
   position: relative;
   width: 100%;
   height: 100%;
-  flex-grow: 1;
+  overflow: hidden;
+}
+
+.imagesTrack {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .galleryImage {
   object-fit: contain;
+  max-height: calc(100vh - 120px);
+  max-width: 100%;
 }
 
 .navigation {
@@ -56,10 +75,45 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  height: 20px;
 }
 
 .counter {
   font-size: 12px;
   opacity: 0.8;
+}
+
+/* Navigation Arrows */
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.1);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navArrow:hover {
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.prevArrow {
+  left: 20px;
+}
+
+.nextArrow {
+  right: 20px;
 }

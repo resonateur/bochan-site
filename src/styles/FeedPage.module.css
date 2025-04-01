@@ -21,9 +21,12 @@
 
 .leftNav,
 .rightNav {
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .nameLink {
@@ -32,10 +35,20 @@
 }
 
 .photographerName {
-  font-size: 3vw;
-  font-weight: normal;
-  letter-spacing: 0.1em;
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: 0.03em; /* Reduced */
   text-transform: uppercase;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  word-spacing: 0.05em; /* Reduced */
+}
+
+.normalChar {
+  font-style: normal;
+}
+
+.italicChar {
+  font-style: italic;
 }
 
 .feedContainer {

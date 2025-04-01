@@ -1,53 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Header from "@/components/layout/Header";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
+import CollectionGallery from "@/components/gallery/CollectionGallery";
 import styles from "@/styles/ProjectsPage.module.css";
 import Footer from "@/components/layout/Footer";
 
-// Sample data for initial development
-const sampleProjects = [
+// Define the collection interface
+interface Collection {
+  id: string;
+  title: string;
+  thumbnail: string;
+  alt: string;
+  images: { src: string; alt: string }[];
+}
+
+// Sample collections data - should match your feed page collections
+const collections: Collection[] = [
   {
     id: "1",
-    src: "/images/projects/project1.jpg",
-    alt: "Project 1",
     title: "PROJECT ONE",
+    thumbnail: "/images/projects/project1.jpg",
+    alt: "Project 1",
+    images: [
+      { src: "/images/projects/project1.jpg", alt: "Project 1 - Image 1" },
+      { src: "/images/projects/project2.jpg", alt: "Project 1 - Image 2" },
+      { src: "/images/projects/project3.jpg", alt: "Project 1 - Image 3" },
+    ],
   },
   {
     id: "2",
-    src: "/images/projects/project2.jpg",
-    alt: "Project 2",
     title: "PROJECT TWO",
+    thumbnail: "/images/projects/project4.jpg",
+    alt: "Project 2",
+    images: [
+      { src: "/images/projects/project4.jpg", alt: "Project 2 - Image 1" },
+      { src: "/images/projects/project5.jpg", alt: "Project 2 - Image 2" },
+      { src: "/images/projects/project6.jpg", alt: "Project 2 - Image 3" },
+    ],
   },
   {
     id: "3",
-    src: "/images/projects/project3.jpg",
-    alt: "Project 3",
     title: "PROJECT THREE",
+    thumbnail: "/images/projects/project6.jpg",
+    alt: "Project 3",
+    images: [
+      { src: "/images/portraits/portrait1.jpg", alt: "Project 3 - Image 1" },
+      { src: "/images/portraits/portrait2.jpg", alt: "Project 3 - Image 2" },
+      { src: "/images/portraits/portrait3.jpg", alt: "Project 3 - Image 3" },
+    ],
   },
-  {
-    id: "4",
-    src: "/images/projects/project4.jpg",
-    alt: "Project 4",
-    title: "PROJECT FOUR",
-  },
-  {
-    id: "5",
-    src: "/images/projects/project5.jpg",
-    alt: "Project 5",
-    title: "PROJECT FIVE",
-  },
-  {
-    id: "6",
-    src: "/images/projects/project6.jpg",
-    alt: "Project 6",
-    title: "PROJECT SIX",
-  },
+  // Add more collections as needed
 ];
 
-const photographerName = "PHOTOGRAPHER NAME";
+const photographerName = "YURI BOCHAN";
 
 export default function Projects() {
+  const [activeCollection, setActiveCollection] = useState<Collection | null>(
+    null
+  );
+  const [galleryOpen, setGalleryOpen] = useState(false);
+
+  // Open gallery when clicking on a project
+  const handleProjectClick = (id: string) => {
+    const collection = collections.find((col) => col.id === id);
+    if (collection) {
+      setActiveCollection(collection);
+      setGalleryOpen(true);
+    }
+  };
+
+  // Close the gallery
+  const closeGallery = () => {
+    setGalleryOpen(false);
+  };
+
+  // Format collections for GalleryGrid
+  const projectItems = collections.map((collection) => ({
+    id: collection.id,
+    src: collection.thumbnail,
+    alt: collection.alt,
+    title: collection.title,
+  }));
+
   return (
     <>
       <Head>
@@ -63,9 +98,10 @@ export default function Projects() {
 
         <main className={styles.main}>
           <GalleryGrid
-            items={sampleProjects}
+            items={projectItems}
             showTitles={true}
             columns="projects"
+            onItemClick={handleProjectClick}
           />
         </main>
 
@@ -74,6 +110,16 @@ export default function Projects() {
         </div>
         <Footer />
       </div>
+
+      {/* Collection Gallery */}
+      {activeCollection && (
+        <CollectionGallery
+          images={activeCollection.images}
+          title={activeCollection.title}
+          isOpen={galleryOpen}
+          onClose={closeGallery}
+        />
+      )}
     </>
   );
 }

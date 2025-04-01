@@ -5,9 +5,12 @@
 }
 
 .worksButton {
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .square {
@@ -38,16 +41,20 @@
 }
 
 .leftNav {
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   cursor: pointer;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .photographerName {
-  font-size: 3vw;
-  font-weight: normal;
+  font-size: 36px;
+  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .closeButton {

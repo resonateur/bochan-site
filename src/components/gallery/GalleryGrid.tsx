@@ -1,3 +1,4 @@
+// src/components/gallery/GalleryGrid.tsx
 import React from "react";
 import Image from "next/image";
 import styles from "@/styles/GalleryGrid.module.css";
@@ -13,12 +14,14 @@ interface GalleryGridProps {
   items: GalleryItem[];
   showTitles?: boolean;
   columns?: "projects" | "portraits" | "coverArt";
+  onItemClick?: (id: string) => void;
 }
 
 const GalleryGrid: React.FC<GalleryGridProps> = ({
   items,
   showTitles = false,
   columns = "projects",
+  onItemClick,
 }) => {
   return (
     <div
@@ -27,7 +30,12 @@ const GalleryGrid: React.FC<GalleryGridProps> = ({
       aria-label="Photo gallery"
     >
       {items.map((item) => (
-        <div key={item.id} className={styles.galleryItem} tabIndex={0}>
+        <div
+          key={item.id}
+          className={styles.galleryItem}
+          tabIndex={0}
+          onClick={() => onItemClick && onItemClick(item.id)}
+        >
           <div className={styles.imageWrapper}>
             <Image
               src={item.src}

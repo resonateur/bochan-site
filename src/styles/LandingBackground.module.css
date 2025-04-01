@@ -4,6 +4,14 @@
   height: 100vh;
   overflow: hidden;
   cursor: pointer;
+  background-color: #000;
+  /* Hardware acceleration */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  backface-visibility: hidden;
+  perspective: 1000;
 }
 
 .bgImage {
@@ -14,8 +22,16 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.3s ease;
   opacity: 0;
+  /* Force GPU acceleration */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  will-change: opacity, transform;
+  /* Render in the background */
+  z-index: 0;
 }
 
 .content {
@@ -29,14 +45,34 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
+  /* Prevent content re-rendering */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .photographerName {
-  font-size: 4vw;
-  font-weight: normal;
-  letter-spacing: var(--letter-spacing);
+  font-size: 60px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   text-align: center;
+  font-family: var(--font-photographer);
+  word-spacing: 0.05em;
+  /* Ensure text rendering quality */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translate3d(0, 0, 0);
+}
+
+.normalChar {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.italicChar {
+  font-style: italic;
+  font-weight: 500;
 }
 
 .footer {
@@ -47,6 +83,9 @@
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+  /* Optimize footer rendering */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
 .year,
@@ -64,10 +103,8 @@
   opacity: 0.7;
 }
 
-@media (max-width: 768px) {
-  .photographerName {
-    font-size: 6vw;
-  }
+.activeBgImage {
+  opacity: 1;
 }
 
 /* Add to LandingBackground.module.css */
@@ -86,4 +123,52 @@
 .year,
 .navLink {
   cursor: none !important;
+}
+
+/* Veil effect - standalone and reliable */
+@keyframes veilReveal {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.veil {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  z-index: 999;
+  animation: veilReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .photographerName {
+    font-size: 6vw;
+  }
+
+  .year,
+  .navLink {
+    font-size: 10px;
+  }
+}
+
+/* High-performance animation class */
+.fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

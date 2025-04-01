@@ -17,7 +17,7 @@ const samplePortraits = [
   { id: "8", src: "/images/portraits/portrait8.jpg", alt: "Portrait 8" },
 ];
 
-const photographerName = "PHOTOGRAPHER NAME";
+const photographerName = "YURI BOCHAN";
 
 export default function Portraits() {
   return (

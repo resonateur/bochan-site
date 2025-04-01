@@ -20,7 +20,7 @@ interface Collection {
 const collections: Collection[] = [
   {
     id: "1",
-    title: "MASLO CHERNOGO TMINA",
+    title: "KIA RIO",
     thumbnail: "/images/projects/project1.jpg",
     alt: "Maslo Chernogo Tmina",
     images: [
@@ -54,13 +54,59 @@ const collections: Collection[] = [
   // Add more collections as needed
 ];
 
-const photographerName = "PHOTOGRAPHER NAME";
+const photographerName = "YURI BOCHAN";
 
 export default function Feed() {
   const [activeCollection, setActiveCollection] = useState<Collection | null>(
     null
   );
   const [galleryOpen, setGalleryOpen] = useState(false);
+
+  // Function to render the name with alternating styles and custom kerning
+  const renderStyledName = (name: string) => {
+    // First, split the name into characters with their styles
+    const styledChars = name.split("").map((char, index) => {
+      const lowerChar = char.toLowerCase();
+      const className = index % 2 === 0 ? styles.normalChar : styles.italicChar;
+
+      // Add class names for kerning specific pairs
+      let kernClass = "";
+      if (
+        lowerChar === "u" &&
+        index > 0 &&
+        name[index - 1].toLowerCase() === "y"
+      ) {
+        kernClass = "u";
+      } else if (
+        lowerChar === "c" &&
+        index > 0 &&
+        name[index - 1].toLowerCase() === "o"
+      ) {
+        kernClass = "c";
+      } else if (
+        lowerChar === "y" &&
+        index < name.length - 1 &&
+        name[index + 1].toLowerCase() === "u"
+      ) {
+        kernClass = "y";
+      } else if (
+        lowerChar === "o" &&
+        index < name.length - 1 &&
+        name[index + 1].toLowerCase() === "c"
+      ) {
+        kernClass = "o";
+      }
+
+      return (
+        <span key={index} className={`${className} ${kernClass}`}>
+          {char}
+        </span>
+      );
+    });
+
+    // Wrap the entire name with the kern classes
+    return <span className="kern-yu kern-oc">{styledChars}</span>;
+  };
 
   const openGallery = (collection: Collection) => {
     setActiveCollection(collection);
@@ -69,6 +115,11 @@ export default function Feed() {
 
   const closeGallery = () => {
     setGalleryOpen(false);
+  };
+
+  const handleCollectionsClick = () => {
+    // Force a hard refresh of the page
+    window.location.href = "/feed";
   };
 
   return (
@@ -83,9 +134,16 @@ export default function Feed() {
 
       <div className={styles.feedPage}>
         <header className={styles.header}>
-          <div className={styles.leftNav}>COLLECTIONS</div>
+          <div
+            className={`${styles.leftNav} interactive`}
+            onClick={handleCollectionsClick}
+          >
+            COLLECTIONS
+          </div>
           <Link href="/" className={styles.nameLink}>
-            <h1 className={styles.photographerName}>{photographerName}</h1>
+            <h1 className={styles.photographerName}>
+              {renderStyledName(photographerName)}
+            </h1>
           </Link>
           <div className={styles.rightNav}>
             <NavigationMenu photographerName={photographerName} />
