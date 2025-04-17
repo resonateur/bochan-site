@@ -42,7 +42,7 @@ const collections: Collection[] = [
   {
     id: "3",
     title: "PROJECT THREE",
-    thumbnail: "/images/projects/project6.jpg",
+    thumbnail: "/images/projects/portrait1.jpg",
     alt: "Project 3",
     images: [
       { src: "/images/portraits/portrait1.jpg", alt: "Project 3 - Image 1" },

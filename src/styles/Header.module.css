@@ -12,7 +12,7 @@
 
 .leftNav,
 .rightNav {
-  font-size: 14px;
+  font-size: 18px;
   text-transform: uppercase;
   cursor: pointer;
   transition: opacity var(--transition-speed);

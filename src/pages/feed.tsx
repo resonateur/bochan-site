@@ -31,7 +31,7 @@ const collections: Collection[] = [
   },
   {
     id: "2",
-    title: "MGZAVREBI – KAMARA",
+    title: "FYODOR THE GREATEST",
     thumbnail: "/images/projects/project4.jpg",
     alt: "Mgzavrebi – Kamara",
     images: [
@@ -42,7 +42,7 @@ const collections: Collection[] = [
   },
   {
     id: "3",
-    title: "KASH",
+    title: "DNIPRO RIVER",
     thumbnail: "/images/portraits/portrait1.jpg",
     alt: "Kash",
     images: [

@@ -1,13 +1,13 @@
 /* globals.css */
 :root {
-  --background-color: #000000;
+  --background-color: #0a0a0a;
   --text-color: #ffffff;
   --transition-speed: 0.3s;
   --letter-spacing: 0.06em;
   --font-header: "Helvetica Neue", Arial, sans-serif;
   --font-photographer:
     "Helvetica Neue", Arial, sans-serif; /* This will be replaced with Oddlini when available */
-  --font-size-nav: 14px;
+  --font-size-nav: 18px;
   --font-size-photographer: 42px;
   --letter-spacing-nav: 0.05em;
   --letter-spacing-photographer: 0.03em;

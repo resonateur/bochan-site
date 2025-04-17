@@ -18,15 +18,15 @@
 
 .contactSection,
 .agencySection {
-  margin-bottom: 60px;
+  margin-bottom: 60px; /* Increased from 60px for better spacing */
 }
 
 .contactItem,
 .agencyItem {
-  font-size: 16px;
+  font-size: 20px; /* Increased from 16px to 24px */
   line-height: 1.6;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 12px; /* Increased from 10px for better spacing */
   display: block;
   color: white;
   text-decoration: none;
@@ -86,6 +86,11 @@
   transform: scaleX(1);
 }
 
+.contactItem.interactive {
+  width: fit-content; /* Ensures the element is only as wide as its content */
+  display: inline-block; /* Makes the element only as wide as its content */
+}
+
 @media (max-width: 768px) {
   .infoContent {
     padding: 100px 20px 0 20px;
@@ -93,6 +98,6 @@
 
   .contactItem,
   .agencyItem {
-    font-size: 14px;
+    font-size: 16px; /* Increased from 14px for mobile */
   }
 }
